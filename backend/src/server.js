@@ -1,6 +1,7 @@
 const express = require('express'); // express = micro framework que ajuda na definição de rotas etc..
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 
 const routes = require('./routes');
 
@@ -17,6 +18,7 @@ mongoose.connect('mongodb+srv://teste-9:teste-9@oministack-94xrw.mongodb.net/sem
 // req.body = Acessar corpo da requisição (para criação, edição)
 app.use(cors());
 app.use(express.json());
+app.use('/files',express.static(path.resolve(__dirname, '..', 'uploads')));
 app.use(routes);
 
 
